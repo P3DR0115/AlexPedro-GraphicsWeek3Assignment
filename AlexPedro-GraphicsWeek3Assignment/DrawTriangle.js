@@ -6,7 +6,7 @@
 
 var FSHADER_SOURCE =
     'void main(){\n' +                                // creating the function for the Fragment Shader
-    '   gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);\n' + // Setting the Fragment Shader color to red with alpha of 1
+    '   gl_FragColor = vec4(1.0, 1.0, 0.0, 1.0);\n' + // Setting the Fragment Shader color to yellow with alpha of 1
     '}\n';                                            // Ending the function
 
 function main() {
@@ -30,20 +30,20 @@ function main() {
         return;
     }
 
-    gl.clearColor(0, 0, 0, 1);
-    gl.clear(gl.COLOR_BUFFER_BIT);
-    gl.drawArrays(gl.TRIANGLES, 0, n);
+    gl.clearColor(0, 0, 0, 1);                                      // Setting the clear color to black with an alpha of 1
+    gl.clear(gl.COLOR_BUFFER_BIT);                                  // Clearing the screen
+    gl.drawArrays(gl.TRIANGLES, 0, n);                              // Drawing the triangle to the screen
 
 }
 
-function initVertexBuffers(gl) {
+function initVertexBuffers(gl) {                                    // Initializing the vertices for the triangle.
     var vertices = new Float32Array([
         0, 0.5, -0.5, -0.5, 0.5, -0.5
     ]);
 
-    var n = 3;
+    var n = 3;                                                      // defines how many points to draw
 
-    var vertexBuffer = gl.createBuffer();
+    var vertexBuffer = gl.createBuffer();                           // Creating buffer object + error message
     if (!vertexBuffer) {
         console.log('unable to create buffer object');
         return;
@@ -52,17 +52,16 @@ function initVertexBuffers(gl) {
 
     gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
 
-    gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
+    gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);       // Passing the vertices to the buffer object
 
-    var a_Position = gl.getAttribLocation(gl.program, 'a_Position');
+    var a_Position = gl.getAttribLocation(gl.program, 'a_Position');// Getting the position of the triangle
     if (a_Position < 0) {
-        console.log('failed to get source location');
+        console.log('failed to get source location');               // Error Message
         return;
     }
 
-    gl.vertexAttribPointer(a_Position, 2, gl.FLOAT, false, 0, 0);
+    gl.vertexAttribPointer(a_Position, 2, gl.FLOAT, false, 0, 0);   // Drawing the triangle
 
     gl.enableVertexAttribArray(a_Position);
-
-    return n;
+    return n;                                                       // Return the number of vertices
 }
