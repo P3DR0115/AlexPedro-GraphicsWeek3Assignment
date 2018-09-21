@@ -32,7 +32,12 @@ function main() {
 
     gl.clearColor(0, 0, 0, 1);                                      // Setting the clear color to black with an alpha of 1
     gl.clear(gl.COLOR_BUFFER_BIT);                                  // Clearing the screen
+
     gl.drawArrays(gl.TRIANGLES, 0, n);                              // Drawing the triangle to the screen
+
+    //gl.drawArrays(gl.LINES, 0, n);                                  // Draws a line on the screen. (v0, v1) then ignores v2
+    //gl.drawArrays(gl.LINE_STRIP, 0, n);                             // draws two lines on the screen (v0, v1) and (v1, v2).
+    //gl.drawArrays(gl.LINE_LOOP, 0, n);                              // Draws two lines on the screen. (v0, v1) and (v1, v2) then connects (v0 and v2);
 
 }
 
