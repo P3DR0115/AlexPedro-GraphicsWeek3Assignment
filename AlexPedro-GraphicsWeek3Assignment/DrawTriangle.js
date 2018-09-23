@@ -55,7 +55,7 @@ function initVertexBuffers(gl) {                                    // Initializ
 
     }
 
-    gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+    gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);                   // Bind the buffer object to a target
 
     gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);       // Passing the vertices to the buffer object
 
